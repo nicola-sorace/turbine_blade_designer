@@ -1,1 +1,4 @@
 *.m linguist-language=MATLAB
+
+# Prevent GitHub from classifying repo as a Python project:
+*.py linguist-vendored 
