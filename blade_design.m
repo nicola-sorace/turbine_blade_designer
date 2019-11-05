@@ -106,7 +106,7 @@ cs(trans_i:fat_i) = lerp(shaft_diameter, cs(fat_i), linspace(0,1,fat_i-trans_i+1
 % Calculate Reynolds numbers (useful for manual profile selection):
 Reys = rho*local_tsr(rs, tsr, R)*V.*cs ./ mu;
 
-%V = 10  % Test blade performance at different wind speed
+%V = 20  % Test blade performance at different wind speed
 
 % Calculate torque and drag using numerical integration:
 dT = @(n) delta_torque(rs(n), ts(n)-bs, sols(n), ind_as(n), V, rho, Cls, Cds);
@@ -209,7 +209,6 @@ end
 % Radial induction factor:
 function ind_r = r_induction_factor(s, phi, Q, Cl, Cd, ind_a, r, tsr, R)
     ltsr = local_tsr(r, tsr, R);
-    %frac = s.*(Cl.*sin(phi)-Cd.*cos(phi)) ./ (4*Q.*ltsr.*cos(phi).^2);  %old typo
     frac = s.*(Cl.*cos(phi)-Cd.*sin(phi)) ./ (4*Q.*ltsr.*cos(phi).^2);
     ind_r = frac .* (1-ind_a);
 end
